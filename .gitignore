@@ -1,0 +1,12 @@
+#Jei model gulo ke train kora hobe i.e. ekhane YOLOv8 seta jate public repo te show na hoi
+models/
+#BIometric or User specific Data 
+data/registered_faces/
+data/registered_scenes/
+#Data from violation log
+violations/
+#System junk that may cause cluttering
+__pycache__/
+*.pyc
+.env
+venv/
