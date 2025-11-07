@@ -7,4 +7,3 @@ class TTEngine:
     def speak(self, text):
         self.engine.say(text)
         self.engine.runAndWait()
-        
