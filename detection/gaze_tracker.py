@@ -19,3 +19,11 @@ class GazeTracker:
             r_iris_xr_iris_x = landmarks.landmark[473].x
             l_left, l_right = landmarks.landmark[130].x, landmarks.landmark[133].x
             r_left, r_right = landmarks.landmark[362].x,landmarks.landmark[263].x
+
+   def ratio(iris, left, right)
+                return (iris - left)/(right - left +1e-6)
+
+                l_ratio = ratio(l_iris_x, l_left, l_right)
+                r_ratio = ratio(r_iris_x,r_left,r_right)
+
+                return(0.35 <= l_ratio <= 0.65)and (0.35 <= r_ratio <= 0.65)
