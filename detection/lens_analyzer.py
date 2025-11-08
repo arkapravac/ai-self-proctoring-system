@@ -20,3 +20,21 @@ def get_roi(outer,iris)
         x2 = min(w, ix + radius)
         y2 = min(h, iy + radius)
         return (x1,y1,x2,y2)
+
+        rois = [get_roi(l_outer , l_iris), get_rois(r_outer, r_iris)]
+        for x1, y1, x2, y2 in rois:
+            if x2 <= x1 or y2 <= y1:
+                continue
+                roi = frame[y1:y2, x1:x2]
+                for x1,y1,x2,y2 in rois:
+                    if x2 <= x1 or y2 <= y1:
+                        continue
+                    roi = frame[y1:y2, x1:x2]
+                    gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
+            _, bright = cv2.threshold(gray, 200, 255, cv2.THRESH_BINARY)
+            if cv2.countNonZero(bright) < 10:
+                continue
+            edges = cv2.Canny(gray, 50, 150)
+            if np.sum(edges) > 80:
+                return True
+        return False
